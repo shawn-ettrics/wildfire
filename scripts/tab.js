@@ -74,19 +74,24 @@ vertTabs.forEach((item, i) => {
 
             })
             this.activate(this.activeIndex)
-            this.hoverHandler(this.frame)
-            // this.frame.onmouseover = () => {
-            //     this.stopPlaying()
-            // }
-            // this.frame.onmouseout = () => {
-            //     this.autoPlay()
-            // }
+            // this.hoverHandler(this.frame)
+            this.frame.onmouseover = () => {
+                this.stopPlaying()
+            }
+            this.frame.onmouseout = () => {
+                this.autoPlay()
+            }
         },
 
         activate(index) {
             this.tabs.forEach((tab, i) => {
                 const img = tab.querySelector('img')
-                this.hoverHandler(img)
+                img.onmouseover = () => {
+                    this.stopPlaying()
+                }
+                img.onmouseout = () => {
+                    this.autoPlay()
+                }
                 if (i===index) {
                     tab.classList.add('active')
                     resizeObserver.observe(img)
@@ -113,14 +118,14 @@ vertTabs.forEach((item, i) => {
             })
         },
 
-        hoverHandler(elm) {
-            elm.frame.onmouseover = () => {
-                this.stopPlaying()
-            }
-            elm.frame.onmouseout = () => {
-                this.autoPlay()
-            }
-        },
+        // hoverHandler(elm) {
+        //     elm.frame.onmouseover = () => {
+        //         this.stopPlaying()
+        //     }
+        //     elm.frame.onmouseout = () => {
+        //         this.autoPlay()
+        //     }
+        // },
 
         tabClickHandler(clickedIndex) {
             clearTimeout(nextPls)
