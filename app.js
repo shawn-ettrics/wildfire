@@ -15,6 +15,15 @@ const resizeObserver = new ResizeObserver(entries => {
 tabCards.forEach(c => {
     c.style.padding = '0'
     resizeObserver.observe(c)
+    c.onmouseover = () => {
+        console.log('mouse over')
+    }
+    c.onclick = () => {
+        console.log('clicked')
+    }
+    c.onmouseout = () => {
+        console.log('mouse out')
+    }
     // const imgs = c.querySelectorAll('img')
     // imgs.forEach(img => {
     //     img.style.height = img.style.width
@@ -121,20 +130,20 @@ vertTabs.forEach((item, i) => {
 tabObjArr.forEach(obj => {
     obj.prepare()
 
-    obj.imgs.forEach(img => {
-        console.log(img)
-        img.onclick = () => {
-            clearTimeout(nextPls)
-            console.log('mouse over')
-            alert('mouse clicked')
-        }
-        img.onmouseout = () => {
-            obj.autoPlay()
-            console.log('mouse out')
-            alert('mouse out')
-        }
+    // obj.imgs.forEach(img => {
+    //     console.log()
+    //     img.onclick = () => {
+    //         clearTimeout(nextPls)
+    //         console.log('mouse over')
+    //         alert('mouse clicked')
+    //     }
+    //     img.onmouseout = () => {
+    //         obj.autoPlay()
+    //         console.log('mouse out')
+    //         alert('mouse out')
+    //     }
 
-    })
+    // })
 })
 
 let tabObserver = new IntersectionObserver(entries => {
