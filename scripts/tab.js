@@ -68,24 +68,18 @@ vertTabs.forEach((item, i) => {
                     this.tabClickHandler(i)
                 })
 
-
                 let tabImg = document.createElement('img')
                 tabImg.src = this.srcs[i]
                 tab.append(tabImg)
 
             })
             this.activate(this.activeIndex)
-            this.imgs.forEach(img => {
-                img.onmouseover = () => {
-                    console.log('mouse over')
-                }
-                img.onclick = () => {
-                    console.log('mouse click')
-                }
-                img.onmouseout = () => {
-                    console.log('mouse out')
-                }
-            })
+            this.frame.onmouseover = () => {
+                stopPlaying()
+            }
+            this.frame.onmouseout = () => {
+                autoPlay()
+            }
         },
 
         activate(index) {
@@ -137,20 +131,6 @@ vertTabs.forEach((item, i) => {
 tabObjArr.forEach(obj => {
     obj.prepare()
 
-    // obj.imgs.forEach(img => {
-    //     console.log()
-    //     img.onclick = () => {
-    //         clearTimeout(nextPls)
-    //         console.log('mouse over')
-    //         alert('mouse clicked')
-    //     }
-    //     img.onmouseout = () => {
-    //         obj.autoPlay()
-    //         console.log('mouse out')
-    //         alert('mouse out')
-    //     }
-
-    // })
 })
 
 let tabObserver = new IntersectionObserver(entries => {
