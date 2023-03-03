@@ -16,7 +16,7 @@ tabCards.forEach(c => {
     c.style.padding = '0'
     resizeObserver.observe(c)
 
-    c.querySelectorAll(img).forEach(img => {
+    c.querySelectorAll('img').forEach(img => {
         img.onmouseover = () => {
             console.log('mouse over')
         }
