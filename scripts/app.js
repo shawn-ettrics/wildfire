@@ -16,17 +16,17 @@ tabCards.forEach(c => {
     c.style.padding = '0'
     resizeObserver.observe(c)
 
-    c.querySelectorAll('img').forEach(img => {
-        img.onmouseover = () => {
-            console.log('mouse over')
-        }
-        img.onclick = () => {
-            console.log('mouse click')
-        }
-        img.onmouseout = () => {
-            console.log('mouse out')
-        }
-    })
+    // c.querySelectorAll('img').forEach(img => {
+    //     img.onmouseover = () => {
+    //         console.log('mouse over')
+    //     }
+    //     img.onclick = () => {
+    //         console.log('mouse click')
+    //     }
+    //     img.onmouseout = () => {
+    //         console.log('mouse out')
+    //     }
+    // })
 
     // const imgs = c.querySelectorAll('img')
     // imgs.forEach(img => {
@@ -73,16 +73,19 @@ vertTabs.forEach((item, i) => {
                 tabImg.src = this.srcs[i]
                 tab.append(tabImg)
 
-                // tabImg.onmouseover = () => {
-                //     clearTimeout(nextPls)
-                //     console.log('mouse in')
-                // }
-                // tabImg.onmouseout = () => {
-                //     this.autoPlay()
-                //     console.log('mouse out')
-                // }
             })
             this.activate(this.activeIndex)
+            this.imgs.forEach(img => {
+                img.onmouseover = () => {
+                    console.log('mouse over')
+                }
+                img.onclick = () => {
+                    console.log('mouse click')
+                }
+                img.onmouseout = () => {
+                    console.log('mouse out')
+                }
+            })
         },
 
         activate(index) {
