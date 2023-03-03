@@ -75,10 +75,10 @@ vertTabs.forEach((item, i) => {
             })
             this.activate(this.activeIndex)
             this.frame.onmouseover = () => {
-                stopPlaying()
+                this.stopPlaying()
             }
             this.frame.onmouseout = () => {
-                autoPlay()
+                this.autoPlay()
             }
         },
 
