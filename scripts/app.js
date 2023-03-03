@@ -20,8 +20,11 @@ tabCards.forEach(c => {
         img.onmouseover = () => {
             console.log('mouse over')
         }
-        c.onclick = () => {
+        img.onclick = () => {
             console.log('mouse click')
+        }
+        img.onmouseout = () => {
+            console.log('mouse out')
         }
     })
 
