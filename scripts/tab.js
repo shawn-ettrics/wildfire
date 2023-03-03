@@ -74,17 +74,19 @@ vertTabs.forEach((item, i) => {
 
             })
             this.activate(this.activeIndex)
-            this.frame.onmouseover = () => {
-                this.stopPlaying()
-            }
-            this.frame.onmouseout = () => {
-                this.autoPlay()
-            }
+            this.hoverHandler(this.frame)
+            // this.frame.onmouseover = () => {
+            //     this.stopPlaying()
+            // }
+            // this.frame.onmouseout = () => {
+            //     this.autoPlay()
+            // }
         },
 
         activate(index) {
             this.tabs.forEach((tab, i) => {
                 const img = tab.querySelector('img')
+                this.hoverHandler(img)
                 if (i===index) {
                     tab.classList.add('active')
                     resizeObserver.observe(img)
@@ -109,6 +111,15 @@ vertTabs.forEach((item, i) => {
                     
                 }
             })
+        },
+
+        hoverHandler(elm) {
+            elm.frame.onmouseover = () => {
+                this.stopPlaying()
+            }
+            elm.frame.onmouseout = () => {
+                this.autoPlay()
+            }
         },
 
         tabClickHandler(clickedIndex) {
