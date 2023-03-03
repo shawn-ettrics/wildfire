@@ -15,15 +15,16 @@ const resizeObserver = new ResizeObserver(entries => {
 tabCards.forEach(c => {
     c.style.padding = '0'
     resizeObserver.observe(c)
-    c.onmouseover = () => {
-        console.log('mouse over')
-    }
-    c.onclick = () => {
-        console.log('clicked')
-    }
-    c.onmouseout = () => {
-        console.log('mouse out')
-    }
+
+    c.querySelectorAll(img).forEach(img => {
+        img.onmouseover = () => {
+            console.log('mouse over')
+        }
+        c.onclick = () => {
+            console.log('mouse click')
+        }
+    })
+
     // const imgs = c.querySelectorAll('img')
     // imgs.forEach(img => {
     //     img.style.height = img.style.width
