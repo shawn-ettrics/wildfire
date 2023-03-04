@@ -110,7 +110,7 @@ html {
         display: block;
         height: 0;
         opacity: 0;
-        /* object-fit: contain; */
+        object-fit: fill;
         transition: all 0.6s;
         width: 100%;
     }
