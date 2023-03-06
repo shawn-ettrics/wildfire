@@ -4,9 +4,7 @@ const tabCards = document.querySelectorAll('.relative')
 
 const resizeObserver = new ResizeObserver(entries => {
     entries.forEach(entry => {
-        // console.log(entry.target, entry.contentRect.width)
         entry.target.style.height = `${entry.contentRect.width}px`
-        // console.log(entry.target.style.height)
     })
 })
 
@@ -16,23 +14,6 @@ tabCards.forEach(c => {
     c.style.padding = '0'
     resizeObserver.observe(c)
 
-    // c.querySelectorAll('img').forEach(img => {
-    //     img.onmouseover = () => {
-    //         console.log('mouse over')
-    //     }
-    //     img.onclick = () => {
-    //         console.log('mouse click')
-    //     }
-    //     img.onmouseout = () => {
-    //         console.log('mouse out')
-    //     }
-    // })
-
-    // const imgs = c.querySelectorAll('img')
-    // imgs.forEach(img => {
-    //     img.style.height = img.style.width
-    //     resizeObserver.observe(img)
-    // })
 })
 
 const tabObjArr = []
@@ -70,6 +51,11 @@ vertTabs.forEach((item, i) => {
 
                 let tabImg = document.createElement('img')
                 tabImg.src = this.srcs[i]
+
+                tabImg.onclick = () => {
+
+                }
+
                 tab.append(tabImg)
 
             })
@@ -118,14 +104,6 @@ vertTabs.forEach((item, i) => {
             })
         },
 
-        // hoverHandler(elm) {
-        //     elm.frame.onmouseover = () => {
-        //         this.stopPlaying()
-        //     }
-        //     elm.frame.onmouseout = () => {
-        //         this.autoPlay()
-        //     }
-        // },
 
         tabClickHandler(clickedIndex) {
             clearTimeout(nextPls)
@@ -173,7 +151,6 @@ vertTabs.forEach((vt, i) => {
 
 
 function getTabPos(child, parent) {
-    let childRect = child.getBoundingClientRect()
     let childY = child.getBoundingClientRect().bottom
     let parentY = parent.getBoundingClientRect().bottom
     return (parentY - childY)
