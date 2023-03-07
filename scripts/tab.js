@@ -16,9 +16,11 @@ vertTabs.forEach((vt, i) => {
 
     const relativeDiv = vt.querySelector('.relative')
     console.log(relativeDiv)
+
     // relativeDiv.style.padding = 0
     resizeObserver.observe(relativeDiv)
     const tabObj = createVerticalTabs(vt, i)
+    console.log(tabObj.frame)
     vtObjs.push(tabObj)
 
 })
