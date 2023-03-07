@@ -113,7 +113,6 @@ html {
     .tab.active img {
         opacity: 1;
         /* height: calc(30vh + 20vw); */
-
         margin: 2em 0;
     }
 }
