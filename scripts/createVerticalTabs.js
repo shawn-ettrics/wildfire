@@ -1,6 +1,6 @@
 import { resizeObserver, getTabPos } from "https://shawn-ettrics.github.io/wildfire/scripts/utilities.js"
 
-function createVerticalTabs(vtElm, vtIndex) {
+function createVerticalTabs(vtElm) {
     return {
         container: vtElm,
         indicator: vtElm.querySelector('.tab-vertical-active-indicator'),
@@ -8,10 +8,10 @@ function createVerticalTabs(vtElm, vtIndex) {
         activeIndex: 0,
         timeoutFunc: null,
         frame: vtElm.querySelector('.frame'),
-        imgs: vtElm.querySelector('.frame').querySelectorAll('img'),
-        srcs: this.imgs.map(img => {
-            return img.src
-        }),
+        // imgs: vtElm.querySelector('.frame').querySelectorAll('img'),
+        // srcs: this.imgs.map(img => {
+        //     return img.src
+        // }),
         moveIndicator() {
             this.indicator.style.opacity = '0.3'
             this.indicator.style.height = '0.5em'
@@ -31,7 +31,10 @@ function createVerticalTabs(vtElm, vtIndex) {
                 })
 
                 let tabImg = document.createElement('img')
-                tabImg.src = this.srcs[i]
+                let imgSrcs = this.frame.querySelectorAll('img').map(img => {
+                        return img.src
+                    })
+                tabImg.src = imgSrcs[i]
 
                 tab.append(tabImg)
 
@@ -70,7 +73,7 @@ function createVerticalTabs(vtElm, vtIndex) {
             this.frame.classList.remove('active')
             void this.frame.offsetWidth
             this.frame.classList.add('active')
-            this.imgs.forEach((img, i) => {
+            this.frame.querySelectorAll('img').forEach((img, i) => {
                 if (i === tabIndex) {
                     img.classList.add('active')
 
