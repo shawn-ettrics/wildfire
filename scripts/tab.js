@@ -1,4 +1,4 @@
-import createVerticalTabs from "./createVerticalTabs"
+import createVerticalTabs from "https://shawn-ettrics.github.io/wildfire/scripts/createVerticalTabs.js"
 
 const vertTabs = document.querySelectorAll('.tabs-vertical')
 const tabCards = document.querySelectorAll('.relative')
