@@ -1,7 +1,7 @@
 import createVerticalTabs from "https://shawn-ettrics.github.io/wildfire/scripts/createVerticalTabs.js"
-import { resizeObserver, getTabPos } from "https://shawn-ettrics.github.io/wildfire/scripts/utilities.js"
+import { resizeObserver } from "https://shawn-ettrics.github.io/wildfire/scripts/utilities.js"
 
-const vertTabs = document.querySelectorAll('.tabs-vertical')
+const vertTabs = document.querySelectorAll('.vertical-tabs')
 // const tabImgFrames = document.querySelectorAll('.relative')
 
 
@@ -10,31 +10,31 @@ const vertTabs = document.querySelectorAll('.tabs-vertical')
 //     resizeObserver.observe(frame)
 // })
 
-const tabObjArr = []
+const vtObjs = []
 
 vertTabs.forEach((vt, i) => {
 
     const relativeDiv = vt.querySelector('.relative')
+    console.log(relativeDiv)
     // relativeDiv.style.padding = 0
     resizeObserver.observe(relativeDiv)
     const tabObj = createVerticalTabs(vt, i)
-    tabObjArr.push(tabObj)
+    vtObjs.push(tabObj)
 
 })
 
-tabObjArr.forEach(obj => {
+vtObjs.forEach(obj => {
     obj.prepare()
-
 })
 
 let tabObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         let i = Number(entry.target.dataset.index)
         if (entry.isIntersecting) {
-            tabObjArr[i].autoPlay()
+            vtObjs[i].autoPlay()
             vertTabs[i].classList.add('show')
         } else {
-            tabObjArr[i].stopPlaying()
+            vtObjs[i].stopPlaying()
         }
     })
 }, {
