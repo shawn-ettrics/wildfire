@@ -1,13 +1,9 @@
 import createVerticalTabs from "https://shawn-ettrics.github.io/wildfire/scripts/createVerticalTabs.js"
+import { resizeObserver, getTabPos } from "https://shawn-ettrics.github.io/wildfire/scripts/utilities.js"
 
 const vertTabs = document.querySelectorAll('.tabs-vertical')
 const tabImgFrames = document.querySelectorAll('.relative')
 
-const resizeObserver = new ResizeObserver(entries => {
-    entries.forEach(entry => {
-        entry.target.style.height = `${entry.contentRect.width}px`
-    })
-})
 
 tabImgFrames.forEach(frame => {
     frame.style.padding = '0'
@@ -48,13 +44,3 @@ vertTabs.forEach((vt, i) => {
     vt.dataset.index = i
     tabObserver.observe(vt)
 })
-
-
-function getTabPos(child, parent) {
-    let childY = child.getBoundingClientRect().bottom
-    let parentY = parent.getBoundingClientRect().bottom
-    return (parentY - childY)
-}
-
-
-export {resizeObserver, getTabPos}
