@@ -55,3 +55,6 @@ function getTabPos(child, parent) {
     let parentY = parent.getBoundingClientRect().bottom
     return (parentY - childY)
 }
+
+
+export {resizeObserver, getTabPos}
