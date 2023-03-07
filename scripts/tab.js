@@ -8,25 +8,23 @@ const resizeObserver = new ResizeObserver(entries => {
     })
 })
 
-
 tabCards.forEach(c => {
     c.style.padding = '0'
     resizeObserver.observe(c)
-
 })
 
 const tabObjArr = []
 
-function createVerticalTabs(elm, index) {
+function createVerticalTabs(vtElm, vtIndex) {
     return {
-        container: elm,
-        indicator: elm.querySelector('.tab-vertical-active-indicator'),
-        tabs: elm.querySelectorAll('.tab'),
+        container: vtElm,
+        indicator: vtElm.querySelector('.tab-vertical-active-indicator'),
+        tabs: vtElm.querySelectorAll('.tab'),
         activeIndex: 0,
         timeoutFunc: null,
-        frame: tabCards[index].querySelector('.frame'),
-        imgs: tabCards[index].querySelectorAll('img'),
-        srcs: [...tabCards[index].querySelectorAll('img')].map(img => {
+        frame: tabCards[vtIndex].querySelector('.frame'),
+        imgs: tabCards[vtIndex].querySelectorAll('img'),
+        srcs: [...tabCards[vtIndex].querySelectorAll('img')].map(img => {
             return img.src
         }),
         moveIndicator() {
@@ -50,15 +48,11 @@ function createVerticalTabs(elm, index) {
                 let tabImg = document.createElement('img')
                 tabImg.src = this.srcs[i]
 
-                tabImg.onclick = () => {
-
-                }
-
                 tab.append(tabImg)
 
             })
             this.activate(this.activeIndex)
-            // this.hoverHandler(this.frame)
+
             this.frame.onmouseover = () => {
                 this.stopPlaying()
             }
@@ -67,7 +61,7 @@ function createVerticalTabs(elm, index) {
             }
         },
 
-        activate(index) {
+        activate(tabIndex) {
             this.tabs.forEach((tab, i) => {
                 const img = tab.querySelector('img')
                 img.onmouseover = () => {
@@ -76,7 +70,7 @@ function createVerticalTabs(elm, index) {
                 img.onmouseout = () => {
                     this.autoPlay()
                 }
-                if (i===index) {
+                if (i===tabIndex) {
                     tab.classList.add('active')
                     resizeObserver.observe(img)
                 } else {
@@ -85,14 +79,14 @@ function createVerticalTabs(elm, index) {
                     img.style.height = 0
                 }
             })
-            this.activeIndex = index
+            this.activeIndex = tabIndex
             this.moveIndicator()
 
             this.frame.classList.remove('active')
             void this.frame.offsetWidth
             this.frame.classList.add('active')
             this.imgs.forEach((img, i) => {
-                if (i === index) {
+                if (i === tabIndex) {
                     img.classList.add('active')
 
                 } else {
@@ -102,11 +96,11 @@ function createVerticalTabs(elm, index) {
             })
         },
         tabClickHandler(clickedIndex) {
-            clearTimeout(nextPls)
+            clearTimeout(this.timeoutFunc)
             this.activate(clickedIndex)
         },
         autoPlay() {
-            nextPls = setTimeout(() => {
+            this.timeoutFunc = setTimeout(() => {
                 this.activeIndex = (this.activeIndex >= this.tabs.length - 1)? 0 : this.activeIndex + 1
                 this.tabs[this.activeIndex].click()
                 this.autoPlay()
