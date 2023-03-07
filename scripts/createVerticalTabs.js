@@ -1,15 +1,15 @@
 import { resizeObserver, getTabPos } from "https://shawn-ettrics.github.io/wildfire/scripts/utilities.js"
 
-function createVerticalTabs(vtElm, vtIndex, imgFrames) {
+function createVerticalTabs(vtElm, vtIndex) {
     return {
         container: vtElm,
         indicator: vtElm.querySelector('.tab-vertical-active-indicator'),
         tabs: vtElm.querySelectorAll('.tab'),
         activeIndex: 0,
         timeoutFunc: null,
-        frame: imgFrames[vtIndex].querySelector('.frame'),
-        imgs: imgFrames[vtIndex].querySelectorAll('img'),
-        srcs: [...imgFrames[vtIndex].querySelectorAll('img')].map(img => {
+        frame: vtElm.querySelector('.frame'),
+        imgs: this.frame.querySelectorAll('img'),
+        srcs: this.imgs.map(img => {
             return img.src
         }),
         moveIndicator() {

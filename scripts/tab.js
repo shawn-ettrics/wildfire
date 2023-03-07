@@ -2,19 +2,22 @@ import createVerticalTabs from "https://shawn-ettrics.github.io/wildfire/scripts
 import { resizeObserver, getTabPos } from "https://shawn-ettrics.github.io/wildfire/scripts/utilities.js"
 
 const vertTabs = document.querySelectorAll('.tabs-vertical')
-const tabImgFrames = document.querySelectorAll('.relative')
+// const tabImgFrames = document.querySelectorAll('.relative')
 
 
-tabImgFrames.forEach(frame => {
-    frame.style.padding = '0'
-    resizeObserver.observe(frame)
-})
+// tabImgFrames.forEach(frame => {
+//     frame.style.padding = '0'
+//     resizeObserver.observe(frame)
+// })
 
 const tabObjArr = []
 
 vertTabs.forEach((vt, i) => {
 
-    const tabObj = createVerticalTabs(vt, i, tabImgFrames)
+    const relativeDiv = vt.querySelector('.relative')
+    // relativeDiv.style.padding = 0
+    resizeObserver.observe(relativeDiv)
+    const tabObj = createVerticalTabs(vt, i)
     tabObjArr.push(tabObj)
 
 })
