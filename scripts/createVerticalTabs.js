@@ -1,13 +1,13 @@
-function createVerticalTabs(vtElm, vtIndex) {
+function createVerticalTabs(vtElm, vtIndex, imgFrames) {
     return {
         container: vtElm,
         indicator: vtElm.querySelector('.tab-vertical-active-indicator'),
         tabs: vtElm.querySelectorAll('.tab'),
         activeIndex: 0,
         timeoutFunc: null,
-        frame: tabCards[vtIndex].querySelector('.frame'),
-        imgs: tabCards[vtIndex].querySelectorAll('img'),
-        srcs: [...tabCards[vtIndex].querySelectorAll('img')].map(img => {
+        frame: imgFrames[vtIndex].querySelector('.frame'),
+        imgs: imgFrames[vtIndex].querySelectorAll('img'),
+        srcs: [...imgFrames[vtIndex].querySelectorAll('img')].map(img => {
             return img.src
         }),
         moveIndicator() {

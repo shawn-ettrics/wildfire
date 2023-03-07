@@ -1,7 +1,7 @@
 import createVerticalTabs from "https://shawn-ettrics.github.io/wildfire/scripts/createVerticalTabs.js"
 
 const vertTabs = document.querySelectorAll('.tabs-vertical')
-const tabCards = document.querySelectorAll('.relative')
+const tabImgFrames = document.querySelectorAll('.relative')
 
 const resizeObserver = new ResizeObserver(entries => {
     entries.forEach(entry => {
@@ -9,16 +9,16 @@ const resizeObserver = new ResizeObserver(entries => {
     })
 })
 
-tabCards.forEach(c => {
-    c.style.padding = '0'
-    resizeObserver.observe(c)
+tabImgFrames.forEach(frame => {
+    frame.style.padding = '0'
+    resizeObserver.observe(frame)
 })
 
 const tabObjArr = []
 
-vertTabs.forEach((item, i) => {
+vertTabs.forEach((vt, i) => {
 
-    const tabObj = createVerticalTabs(item, i)
+    const tabObj = createVerticalTabs(vt, i, tabImgFrames)
     tabObjArr.push(tabObj)
 
 })
