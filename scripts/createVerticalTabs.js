@@ -8,10 +8,7 @@ function createVerticalTabs(vtElm) {
         activeIndex: 0,
         timeoutFunc: null,
         frame: vtElm.querySelector('.frame'),
-        // imgs: vtElm.querySelector('.frame').querySelectorAll('img'),
-        // srcs: this.imgs.map(img => {
-        //     return img.src
-        // }),
+
         moveIndicator() {
             this.indicator.style.opacity = '0.3'
             this.indicator.style.height = '0.5em'

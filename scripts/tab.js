@@ -2,25 +2,15 @@ import createVerticalTabs from "https://shawn-ettrics.github.io/wildfire/scripts
 import { resizeObserver } from "https://shawn-ettrics.github.io/wildfire/scripts/helpers.js"
 
 const vertTabs = document.querySelectorAll('.vertical-tabs')
-// const tabImgFrames = document.querySelectorAll('.relative')
-
-
-// tabImgFrames.forEach(frame => {
-//     frame.style.padding = '0'
-//     resizeObserver.observe(frame)
-// })
 
 const vtObjs = []
 
 vertTabs.forEach(vt => {
 
     const relativeDiv = vt.querySelector('.relative')
-    console.log(relativeDiv)
 
-    // relativeDiv.style.padding = 0
     resizeObserver.observe(relativeDiv)
     const tabObj = createVerticalTabs(vt)
-    console.log(tabObj.frame)
     vtObjs.push(tabObj)
 
 })
