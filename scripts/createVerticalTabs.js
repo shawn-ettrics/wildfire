@@ -31,7 +31,7 @@ function createVerticalTabs(vtElm) {
                 })
 
                 let tabImg = document.createElement('img')
-                let imgSrcs = this.frame.querySelectorAll('img').map(img => {
+                let imgSrcs = [...this.frame.querySelectorAll('img')].map(img => {
                         return img.src
                     })
                 tabImg.src = imgSrcs[i]
