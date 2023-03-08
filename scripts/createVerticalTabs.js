@@ -2,7 +2,7 @@ import { resizeObserver, getTabPos } from "https://shawn-ettrics.github.io/wildf
 
 function createVerticalTabs(vtElm) {
     return {
-        container: vtElm,
+        tabWrapper: vtElm.querySelector('.tab-wrapper'),
         indicator: vtElm.querySelector('.tab-vertical-active-indicator'),
         tabs: vtElm.querySelectorAll('.tab'),
         activeIndex: 0,
@@ -18,7 +18,7 @@ function createVerticalTabs(vtElm) {
             setTimeout(() => {
                 this.indicator.style.opacity = '1'
                 this.indicator.style.height = '1.5em'
-                let pos = getTabPos(this.tabs[this.activeIndex].querySelector('.tab-number'), this.container)
+                let pos = getTabPos(this.tabs[this.activeIndex].querySelector('.tab-number'), this.tabWrapper)
                 this.indicator.style.bottom = `calc(${pos}px + 0.2em)`
             }, 600);
         },
