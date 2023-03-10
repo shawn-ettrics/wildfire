@@ -5,6 +5,21 @@ const vertTabs = document.querySelectorAll('.vertical-tabs')
 
 const vtObjs = []
 
+let tabObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        let i = Number(entry.target.dataset.index)
+        if (entry.isIntersecting) {
+            vtObjs[i].autoPlay()
+        } else {
+            vtObjs[i].stopPlaying()
+        }
+    })
+}, {
+    threshold: 0.7,
+    rootMargin: `${0.3 * window.innerHeight}px 0px`, 
+})
+
+
 vertTabs.forEach((vt, i) => {
 
     const relativeDiv = vt.querySelector('.relative')
@@ -18,25 +33,7 @@ vertTabs.forEach((vt, i) => {
 
 })
 
-let tabObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        let i = Number(entry.target.dataset.index)
-        if (entry.isIntersecting) {
-            vtObjs[i].autoPlay()
-            // vertTabs[i].classList.add('show')
-        } else {
-            vtObjs[i].stopPlaying()
-        }
-        // if (entry.isIntersecting) {
-        //     entry.target.autoplay()
-        // } else {
-        //     entry.target.stopPlaying()
-        // }
-    })
-}, {
-    threshold: 0.7,
-    rootMargin: `${0.3 * window.innerHeight}px 0px`, 
-})
+
 
 // vtObjs.forEach(obj => {
 //     obj.prepare()
