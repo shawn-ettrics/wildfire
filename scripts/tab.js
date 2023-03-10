@@ -7,12 +7,15 @@ const vtObjs = []
 
 let tabObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
+
         let i = Number(entry.target.dataset.index)
+
         if (entry.isIntersecting) {
             vtObjs[i].autoPlay()
         } else {
             vtObjs[i].stopPlaying()
         }
+
     })
 }, {
     threshold: 0.7,
@@ -32,17 +35,3 @@ vertTabs.forEach((vt, i) => {
     tabObserver.observe(vt)
 
 })
-
-
-
-// vtObjs.forEach(obj => {
-//     obj.prepare()
-// })
-
-
-
-
-// vertTabs.forEach((vt, i) => {
-//     vt.dataset.index = i
-//     tabObserver.observe(vt)
-// })
