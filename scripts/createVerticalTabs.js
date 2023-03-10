@@ -1,4 +1,4 @@
-import { resizeObserver, tabObserver, getTabPos } from "https://shawn-ettrics.github.io/wildfire/scripts/helpers.js"
+import { resizeObserver, getTabPos } from "https://shawn-ettrics.github.io/wildfire/scripts/helpers.js"
 
 function createVerticalTabs(vtElm) {
     return {
@@ -21,8 +21,6 @@ function createVerticalTabs(vtElm) {
         },
 
         prepare() {
-
-            tabObserver.observe(vtElm)
 
             this.tabs.forEach((tab, i) => {
                 tab.addEventListener('click', ()=>{
