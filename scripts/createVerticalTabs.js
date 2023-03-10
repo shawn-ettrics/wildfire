@@ -22,7 +22,7 @@ function createVerticalTabs(vtElm) {
 
         prepare() {
 
-            resizeObserver.observe(this)
+            resizeObserver.observe(vtElm)
 
             this.tabs.forEach((tab, i) => {
                 tab.addEventListener('click', ()=>{
