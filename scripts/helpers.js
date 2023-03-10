@@ -15,4 +15,4 @@ function getTabPos(child, parent) {
 
 
 
-export {resizeObserver, tabObserver, getTabPos}
+export {resizeObserver, getTabPos}
