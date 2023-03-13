@@ -7,7 +7,7 @@ html {
 }
 
 .vertical-tabs .tab-wrapper {
-    color: white;
+    /* color: white; */
     transition: all 0.6s;
     position: relative;
 }
