@@ -23,6 +23,13 @@ let tabObserver = new IntersectionObserver(entries => {
 })
 
 
+const resizeObserver = new ResizeObserver(entries => {
+    entries.forEach(entry => {
+        entry.target.style.height = `${entry.contentRect.width}px`
+    })
+})
+
+
 vertTabs.forEach((vt, i) => {
 
     const relativeDiv = vt.querySelector('.relative')
@@ -40,11 +47,7 @@ vertTabs.forEach((vt, i) => {
 ----------------------CreateVerticalTabs-------------------------
 ----------------------------------------------------------------*/
 
-const resizeObserver = new ResizeObserver(entries => {
-    entries.forEach(entry => {
-        entry.target.style.height = `${entry.contentRect.width}px`
-    })
-})
+
 
 function createVerticalTabs(vtElm) {
     return {
@@ -148,9 +151,6 @@ function createVerticalTabs(vtElm) {
 /* --------------------------------------------------------------
 -----------------------------Helpers-----------------------------
 ----------------------------------------------------------------*/
-
-
-
 
 
 
