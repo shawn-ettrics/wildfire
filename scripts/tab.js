@@ -40,6 +40,12 @@ vertTabs.forEach((vt, i) => {
 ----------------------CreateVerticalTabs-------------------------
 ----------------------------------------------------------------*/
 
+const resizeObserver = new ResizeObserver(entries => {
+    entries.forEach(entry => {
+        entry.target.style.height = `${entry.contentRect.width}px`
+    })
+})
+
 function createVerticalTabs(vtElm) {
     return {
         tabWrapper: vtElm.querySelector('.tab-wrapper'),
@@ -144,11 +150,7 @@ function createVerticalTabs(vtElm) {
 ----------------------------------------------------------------*/
 
 
-const resizeObserver = new ResizeObserver(entries => {
-    entries.forEach(entry => {
-        entry.target.style.height = `${entry.contentRect.width}px`
-    })
-})
+
 
 
 
