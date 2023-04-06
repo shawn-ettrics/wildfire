@@ -5,7 +5,7 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        width: calc(attr(data-progress) * 1%);
+        width: 50%;
         height: 1px;
         background-color: #f1ac36;
     }
