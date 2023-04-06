@@ -9,16 +9,16 @@ tabMenus.forEach( menu => {
 
     const tabLinks = menu.querySelectorAll('.tab-link')
 
-    tabLinks.forEach(link => {
 
-        console.log(link)
-        link.dataset.progress = 1
-        link.onclick = () => {
-            if (link.classList.contains('w--current')) {
-                link.dataset.progress = 50
-            }
-        }
-    })
+    let i = 0
+    const clickNext = () => {
+        tabLinks[i].click()
+        i++
+        setTimeout(() => {
+            clickNext()
+        }, timeInterval)
+    } 
+
 })
 
 
