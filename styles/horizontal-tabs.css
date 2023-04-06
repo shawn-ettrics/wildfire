@@ -1,3 +1,7 @@
+:root {
+    --time: '10s'
+}
+
 @media (max-width: 767px) {
 
     .tab-link.w--current::after {
@@ -8,7 +12,7 @@
         width: 0;
         height: 1px;
         background-color: #f1ac36;
-        animation: timer 2s linear forwards ;
+        animation: timer var(--time) linear forwards ;
     }
 
     @keyframes timer {

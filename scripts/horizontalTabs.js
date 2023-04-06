@@ -1,8 +1,11 @@
+const timeInterval = 4
+
 const tabMenus = document.querySelectorAll('.w-tab-menu')
+
+document.querySelector(':root').setProperty('--time', `${timeInterval}s`)
 
 tabMenus.forEach( menu => {
 
-    const tabLinks = menu.querySelectorAll('.tab-link')
 
     tabLinks.forEach(link => {
 
