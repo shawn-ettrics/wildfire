@@ -5,13 +5,13 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        /* width: 0; */
+        width: 0;
         height: 1px;
         background-color: #f1ac36;
-        animation: time-indicator 2s linear 0 forwards ;
+        animation: timer 2s linear forwards ;
     }
 
-    @keyframes time-indicator {
+    @keyframes timer {
         0% {
             width: 0%;
         }
