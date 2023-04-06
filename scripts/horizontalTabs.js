@@ -7,6 +7,7 @@ document.querySelector(':root').style.setProperty('--time', `${timeInterval}s`)
 
 tabMenus.forEach( menu => {
 
+    const tabLinks = menu.querySelectorAll('.tab-link')
 
     tabLinks.forEach(link => {
 
