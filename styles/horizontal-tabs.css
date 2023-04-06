@@ -1,14 +1,23 @@
 @media (max-width: 767px) {
 
     .tab-link.w--current::after {
-        content: attr(data-progress);
+        content: '';
         position: absolute;
         bottom: 0;
         left: 0;
-        width: 50%;
+        /* width: 0; */
         height: 1px;
         background-color: #f1ac36;
+        animation: time-indicator 2s linear 0 forwards ;
     }
 
+    @keyframes time-indicator {
+        0% {
+            width: 0%;
+        }
+        100% {
+            width: 100%;
+        }
+    }
 }
 
