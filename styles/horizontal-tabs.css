@@ -2,9 +2,7 @@
     --time: '10s';
 }
 
-.timed-horizontal-tabs .tab-link.w--current {
-    border-bottom: solid 1px rgba(255, 255, 255, 0.3);
-}
+
 
 .timed-horizontal-tabs .w-tab-menu {
     -ms-overflow-style: none;  /* IE and Edge */
@@ -16,6 +14,10 @@
 }
 
 @media (max-width: 768px) {
+
+    .timed-horizontal-tabs .tab-link.w--current {
+        border-bottom: solid 1px rgba(255, 255, 255, 0.3);
+    }
 
     .tab-link.w--current::after {
         content: '';
