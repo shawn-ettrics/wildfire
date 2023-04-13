@@ -32,8 +32,16 @@ tabMenus.forEach( menu => {
     function activateNext(currentTab) {
         let currentIndex = parseInt(currentTab.dataset.tabIndex)
         let nextIndex = currentIndex >= tabLinks.length - 1? 0 : currentIndex + 1
-        // let remainingDuration = tabDuration
-        // const activeBar = currentTab.querySelector('.progressbar')
+        let remainingDuration = tabDuration
+        const activeBar = currentTab.querySelector('.progressbar')
+
+        activeBar.animate([
+            {width: '0%'},
+            {width: '100%'}
+        ],{
+            duration: tabDuration,
+            easing: 'linear',
+        })
 
         // const progressTimer = () => {
         //     activeBar.style.width = `${(tabDuration - remainingDuration) / tabDuration * 100}%`
@@ -49,6 +57,7 @@ tabMenus.forEach( menu => {
         //     }
         // }
         // progressTimer()
+
 
         setTimeout( () => {
             tabLinks[nextIndex].click()
