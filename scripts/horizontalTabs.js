@@ -32,23 +32,23 @@ tabMenus.forEach( menu => {
     function activateNext(currentTab) {
         let currentIndex = parseInt(currentTab.dataset.tabIndex)
         let nextIndex = currentIndex >= tabLinks.length - 1? 0 : currentIndex + 1
-        let remainingDuration = tabDuration
-        const activeBar = currentTab.querySelector('.progressbar')
+        // let remainingDuration = tabDuration
+        // const activeBar = currentTab.querySelector('.progressbar')
 
-        const progressTimer = () => {
-            activeBar.style.width = `${(tabDuration - remainingDuration) / tabDuration * 100}%`
-            remainingDuration = remainingDuration - 10
-            if (remainingDuration > 0) {
-                setTimeout(() => {
-                    progressTimer()
-                }, 10)
-            } else {
-            tabLinks[nextIndex].click()
-            let scrollAmount = tabLinks[nextIndex].offsetLeft
-            currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
-            }
-        }
-        progressTimer()
+        // const progressTimer = () => {
+        //     activeBar.style.width = `${(tabDuration - remainingDuration) / tabDuration * 100}%`
+        //     remainingDuration = remainingDuration - 10
+        //     if (remainingDuration > 0) {
+        //         setTimeout(() => {
+        //             progressTimer()
+        //         }, 10)
+        //     } else {
+        //     tabLinks[nextIndex].click()
+        //     let scrollAmount = tabLinks[nextIndex].offsetLeft
+        //     currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
+        //     }
+        // }
+        // progressTimer()
 
         setTimeout( () => {
             tabLinks[nextIndex].click()
