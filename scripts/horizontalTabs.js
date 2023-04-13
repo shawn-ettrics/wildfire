@@ -19,7 +19,7 @@ tabMenus.forEach( menu => {
 
         const progressbar = document.createElement('div')
         progressbar.classList.add('progressbar')
-        tab.append(progressbar)
+        // tab.append(progressbar)
         tab.dataset.tabIndex = i
         if (tab.classList.contains('w--current')) {
             activateNext(tab)
