@@ -15,13 +15,13 @@ tabMenus.forEach( menu => {
     // menu.style.overflow = 'scroll'
     const tabLinks = menu.querySelectorAll('.tab-link')
 
-    // tabLinks.forEach( link => {
-    //     link.onclick = (e) => {
-    //         console.log(e.target)
-    //     }
-    // })
+    tabLinks.forEach( link => {
+        link.onclick = (e) => {
+            console.log(e.target)
+        }
+    })
     
-    // tabLinks[1].click()
+    tabLinks[1].click()
 
     // let i = 0
     // const clickNext = () => {
