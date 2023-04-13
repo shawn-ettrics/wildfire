@@ -10,6 +10,10 @@
     z-index: 0;
     transition: backgroung-color 0.4s ease-in-out;
 }
+/* Hide scrollbar for Chrome, Safari and Opera */
+.tab-slide-child .padding-large::-webkit-scrollbar {
+    display: none;
+}
 
 .tab-slide-child .padding-medium {
     transition: background-color 0.6s ease-in;
@@ -31,10 +35,7 @@
     }
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-.tab-slide-child .padding-large::-webkit-scrollbar {
-    display: none;
-}
+
 
 .overflown-wrapper {
     display: flex;

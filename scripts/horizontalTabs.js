@@ -15,17 +15,24 @@ tabMenus.forEach( menu => {
     // menu.style.overflow = 'scroll'
     const tabLinks = menu.querySelectorAll('.tab-link')
 
-    tabLinks.forEach( (link, i) => {
-        link.onclick = (e) => {
-            console.log(link)
+    tabLinks.forEach( (tab, i) => {
 
+        tab.dataset.tabIndex = i
+        if (tab.classList.contains('w--current')) {
+            activateNext(tab)
+        }
+        tab.onclick = () => {
+            activateNext(tab)
         }
     })
-
-        setTimeout(() => {
-            tabLinks[2].click()
-        }, 1000 * timeInterval)
     
+    function activateNext(currentTab) {
+        let currentIndex = parseInt(currentTab.dataset.tabIndex)
+        let nextIndex = currentIndex >= tabLinks.length - 1? 0 : currentIndex + 1 
+        setTimeout( () => {
+            tabLinks[nextIndex].click()
+        }, timeInterval * 1000)
+    }
     // tabLinks[1].click()
 
     // let i = 0
