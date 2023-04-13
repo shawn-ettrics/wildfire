@@ -25,6 +25,7 @@ tabMenus.forEach( menu => {
     let i = 0
     const clickNext = () => {
         tabLinks[i].click()
+        console.log(tabLinks[i])
         i++
         setTimeout(() => {
             clickNext()
