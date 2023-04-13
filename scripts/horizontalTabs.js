@@ -3,7 +3,7 @@ const mobileBreakpoint = 767
 
 const tabMenus = document.querySelectorAll('.w-tab-menu')
 
-document.querySelector(':root').style.setProperty('--time', `${tabDuration/1000}s`)
+document.querySelector(':root').style.setProperty('--time', `${tabDuration}s`)
 
 tabMenus.forEach( menu => {
 
@@ -17,47 +17,47 @@ tabMenus.forEach( menu => {
 
     tabLinks.forEach( (tab, i) => {
 
-        // const progressbar = document.createElement('div')
-        // progressbar.classList.add('progressbar')
-        // tab.append(progressbar)
+        const progressbar = document.createElement('div')
+        progressbar.classList.add('progressbar')
+        tab.append(progressbar)
         tab.dataset.tabIndex = i
-        // if (tab.classList.contains('w--current')) {
-        //     activateNext(tab)
-        // }
-        // tab.onclick = () => {
-        //     activateNext(tab)
-        // }
+        if (tab.classList.contains('w--current')) {
+            activateNext(tab)
+        }
+        tab.onclick = () => {
+            activateNext(tab)
+        }
     })
     
-    // function activateNext(currentTab) {
-    //     let currentIndex = parseInt(currentTab.dataset.tabIndex)
-    //     let nextIndex = currentIndex >= tabLinks.length - 1? 0 : currentIndex + 1
-    //     let remainingDuration = tabDuration
-    //     const activeBar = currentTab.querySelector('.progressbar')
+    function activateNext(currentTab) {
+        let currentIndex = parseInt(currentTab.dataset.tabIndex)
+        let nextIndex = currentIndex >= tabLinks.length - 1? 0 : currentIndex + 1
+        let remainingDuration = tabDuration
+        const activeBar = currentTab.querySelector('.progressbar')
 
-    //     const progressTimer = () => {
-    //         activeBar.style.width = `${(tabDuration - remainingDuration) / tabDuration * 100}%`
-    //         remainingDuration = remainingDuration - 100
-    //         if (remainingDuration > 0) {
-    //             setTimeout(() => {
-    //                 progressTimer()
-    //             }, 100)
-    //         } else {
-    //                         tabLinks[nextIndex].click()
-    //         let scrollAmount = tabLinks[nextIndex].offsetLeft
-    //         currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
-    //         }
-    //     }
-    //     progressTimer()
+        const progressTimer = () => {
+            activeBar.style.width = `${(tabDuration - remainingDuration) / tabDuration * 100}%`
+            remainingDuration = remainingDuration - 100
+            if (remainingDuration > 0) {
+                setTimeout(() => {
+                    progressTimer()
+                }, 100)
+            } else {
+                            tabLinks[nextIndex].click()
+            let scrollAmount = tabLinks[nextIndex].offsetLeft
+            currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
+            }
+        }
+        progressTimer()
 
-    //     setTimeout( () => {
-    //         tabLinks[nextIndex].click()
-    //         let scrollAmount = tabLinks[nextIndex].offsetLeft
-    //         currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
-    //     }, tabDuration)
-    // }
+        setTimeout( () => {
+            tabLinks[nextIndex].click()
+            let scrollAmount = tabLinks[nextIndex].offsetLeft
+            currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
+        }, tabDuration)
+    }
 
-
+    
     // tabLinks[1].click()
 
     // let i = 0
