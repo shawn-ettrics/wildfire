@@ -31,6 +31,7 @@ tabMenus.forEach( menu => {
             clickNext()
         }, timeInterval)
     } 
+    clickNext()
 
 })
 
