@@ -29,7 +29,13 @@
         width: 0;
         height: 1px;
         background-color: #f1ac36;
+        z-index: 2;
+        opacity: 0;
     }
+    .tab-link.w--current .progressbar {
+        opacity: 1;
+    }
+
 
     /* .tab-link.w--current::after {
         content: '';
