@@ -34,7 +34,7 @@ tabMenus.forEach( menu => {
         let nextIndex = currentIndex >= tabLinks.length - 1? 0 : currentIndex + 1
         let remainingDuration = tabDuration
         const activeBar = currentTab.querySelector('.progressbar')
-        activeBar.style.width = `50%`
+        // activeBar.style.width = `50%`
 
         // const progressTimer = () => {
         //     activeBar.style.width = `${(tabDuration - remainingDuration) / tabDuration * 100}%`
