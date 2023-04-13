@@ -31,7 +31,7 @@ tabMenus.forEach( menu => {
         let nextIndex = currentIndex >= tabLinks.length - 1? 0 : currentIndex + 1 
         setTimeout( () => {
             tabLinks[nextIndex].click()
-            let scrollAmount = currentTab.parentElement.offsetLeft
+            let scrollAmount = tabLinks[nextIndex].offsetLeft
             currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
         }, timeInterval * 1000)
     }
