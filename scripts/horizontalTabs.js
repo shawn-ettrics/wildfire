@@ -37,13 +37,13 @@ tabMenus.forEach( menu => {
 
         const progressTimer = () => {
             activeBar.style.width = `${(tabDuration - remainingDuration) / tabDuration * 100}%`
-            remainingDuration = remainingDuration - 100
+            remainingDuration = remainingDuration - 10
             if (remainingDuration > 0) {
                 setTimeout(() => {
                     progressTimer()
-                }, 100)
+                }, 10)
             } else {
-                            tabLinks[nextIndex].click()
+            tabLinks[nextIndex].click()
             let scrollAmount = tabLinks[nextIndex].offsetLeft
             currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
             }
