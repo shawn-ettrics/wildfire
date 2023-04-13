@@ -21,7 +21,17 @@
         margin-right: 40vw;
     }
 
-    .tab-link.w--current::after {
+    .tab-link .progressbar {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: #f1ac36;
+    }
+
+    /* .tab-link.w--current::after {
         content: '';
         position: absolute;
         bottom: -1px;
@@ -30,7 +40,7 @@
         height: 1px;
         background-color: #f1ac36;
         animation: timer var(--time) linear forwards ;
-    }
+    } */
 
     @keyframes timer {
         0% {
