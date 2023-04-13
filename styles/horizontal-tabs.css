@@ -2,9 +2,8 @@
     --time: '10s';
 }
 
-
-
 .timed-horizontal-tabs .w-tab-menu {
+    padding-right: 100vw;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
@@ -18,8 +17,20 @@
     .timed-horizontal-tabs .tab-link.w--current {
         border-bottom: solid 1px rgba(255, 255, 255, 0.3);
     }
+    .tab-link .progressbar {
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: #f1ac36;
+        opacity: 0;
+    }
+    .tab-link.w--current .progressbar {
+        opacity: 1;
+    }
 
-    .tab-link.w--current::after {
+    /* .tab-link.w--current::after {
         content: '';
         position: absolute;
         bottom: -1px;
@@ -28,7 +39,7 @@
         height: 1px;
         background-color: #f1ac36;
         animation: timer var(--time) linear forwards ;
-    }
+    } */
 
     @keyframes timer {
         0% {
