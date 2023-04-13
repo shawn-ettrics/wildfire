@@ -17,7 +17,7 @@ tabMenus.forEach( menu => {
 
     tabLinks.forEach( link => {
         link.onclick = (e) => {
-            console.log(e.target)
+            console.log(link)
         }
     })
     
