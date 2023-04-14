@@ -25,30 +25,24 @@ tabMenus.forEach( menu => {
         tab.dataset.tabIndex = i
 
         if (tab.classList.contains('w--current')) {
-            activateNext(tab)
+            activate(tab)
         }
 
         tab.onclick = () => {
-            console.log(timer, 'onclick')
-            clearTimeout(timer)
-            let scrollAmount = tab.offsetLeft
-            tab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
 
-            // clearTimeout(timer)
             if (!tab.classList.contains('w--current')) {
-                activateNext(tab)
+                clearTimeout(timer)
+                activate(tab)
             }
 
         }
 
+        function activate(currentTab) {
+            currentTab.parentElement.scrollTo({left: currentTab, behavior: 'smooth'})
 
-
-        function activateNext(currentTab) {
-            console.log(timer, 'activate')
-            clearTimeout(timer)
             let currentIndex = parseInt(currentTab.dataset.tabIndex)
             let nextIndex = currentIndex >= tabLinks.length - 1? 0 : currentIndex + 1
-            let remainingDuration = tabDuration
+
             const activeBar = currentTab.querySelector('.progressbar')
     
             const timerAnime = activeBar.animate([
@@ -61,24 +55,24 @@ tabMenus.forEach( menu => {
     
             let currentTime
             currentTab.onmouseenter = () => {
-                console.log(timer, 'mouseenter')
                 timerAnime.pause()
                 currentTime = timerAnime.currentTime
                 clearTimeout(timer)
             }
             currentTab.onmouseleave = () => {
+                console.log(timerAnime.currentTime)
                 timerAnime.play()
                 timer = setTimeout( () => {
                     tabLinks[nextIndex].click()
-                    let scrollAmount = tabLinks[nextIndex].offsetLeft
-                    currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
+                    // let scrollAmount = tabLinks[nextIndex].offsetLeft
+                    // currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
                 }, tabDuration - currentTime)
             }
     
             timer = setTimeout( () => {
                 tabLinks[nextIndex].click()
-                let scrollAmount = tabLinks[nextIndex].offsetLeft
-                currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
+                // let scrollAmount = tabLinks[nextIndex].offsetLeft
+                // currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
             }, tabDuration)
             
         }
