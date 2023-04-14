@@ -28,6 +28,8 @@ tabMenus.forEach( menu => {
             activateNext(tab)
         }
     })
+
+    let timer
     
     function activateNext(currentTab) {
         let currentIndex = parseInt(currentTab.dataset.tabIndex)
@@ -35,7 +37,7 @@ tabMenus.forEach( menu => {
         let remainingDuration = tabDuration
         const activeBar = currentTab.querySelector('.progressbar')
 
-        activeBar.animate([
+        const timerAnime = activeBar.animate([
             {width: '0%'},
             {width: '100%'}
         ],{
@@ -43,28 +45,29 @@ tabMenus.forEach( menu => {
             easing: 'linear',
         })
 
-        // const progressTimer = () => {
-        //     activeBar.style.width = `${(tabDuration - remainingDuration) / tabDuration * 100}%`
-        //     remainingDuration = remainingDuration - 10
-        //     if (remainingDuration > 0) {
-        //         setTimeout(() => {
-        //             progressTimer()
-        //         }, 10)
-        //     } else {
-        //     tabLinks[nextIndex].click()
-        //     let scrollAmount = tabLinks[nextIndex].offsetLeft
-        //     currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
-        //     }
-        // }
-        // progressTimer()
+        let currentTime
+        currentTab.onmouseenter = () => {
+            timerAnime.pause()
+            currentTime = timerAnime.currentTime
+            clearTimeout(timer)
+        }
+        currentTab.onmouseleave = () => {
+            timerAnime.play()
+            timer = setTimeout( () => {
+                tabLinks[nextIndex].click()
+                let scrollAmount = tabLinks[nextIndex].offsetLeft
+                currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
+            }, tabDuration - currentTime)
+        }
 
-
-        setTimeout( () => {
+        timer = setTimeout( () => {
             tabLinks[nextIndex].click()
             let scrollAmount = tabLinks[nextIndex].offsetLeft
             currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
         }, tabDuration)
+        
     }
+
 
     
     // tabLinks[1].click()
