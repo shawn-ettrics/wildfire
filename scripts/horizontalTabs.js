@@ -1,13 +1,13 @@
 const tabDuration = 4000
 const mobileBreakpoint = 767
 
-const tabMenus = document.querySelectorAll('.w-tab-menu')
+const timedTabComponents = document.querySelectorAll('.timed-horizontal-tabs')
 
 document.querySelector(':root').style.setProperty('--time', `${tabDuration}s`)
 
-tabMenus.forEach( menu => {
+timedTabComponents.forEach( tabComponent => {
 
-    const tabLinks = menu.querySelectorAll('.tab-link')
+    const tabLinks = tabComponent.querySelectorAll('.tab-link')
 
     let timer
 
@@ -49,7 +49,7 @@ tabMenus.forEach( menu => {
     
             let currentTime
 
-            const tabContent = menu.querySelector('.tabs-content.w-tab-content') 
+            const tabContent = tabComponent.querySelector('.tabs-content.w-tab-content') 
             console.log(tabContent)
             tabContent.onmouseenter = () => {
                 timerAnime.pause()
