@@ -25,6 +25,7 @@ tabMenus.forEach( menu => {
             activateNext(tab)
         }
         tab.onclick = () => {
+            
             activateNext(tab)
         }
     })
@@ -32,12 +33,11 @@ tabMenus.forEach( menu => {
     
     
     function activateNext(currentTab) {
+        clearTimeout(currentTab.timer)
         let currentIndex = parseInt(currentTab.dataset.tabIndex)
         let nextIndex = currentIndex >= tabLinks.length - 1? 0 : currentIndex + 1
         let remainingDuration = tabDuration
         const activeBar = currentTab.querySelector('.progressbar')
-
-        let timer
 
         const timerAnime = activeBar.animate([
             {width: '0%'},
@@ -52,18 +52,18 @@ tabMenus.forEach( menu => {
             timerAnime.pause()
             currentTime = timerAnime.currentTime
             console.log(currentTime)
-            clearTimeout(timer)
+            clearTimeout(currentTab.timer)
         }
         currentTab.onmouseleave = () => {
             timerAnime.play()
-            timer = setTimeout( () => {
+            currentTab.timer = setTimeout( () => {
                 tabLinks[nextIndex].click()
                 let scrollAmount = tabLinks[nextIndex].offsetLeft
                 currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
             }, tabDuration - currentTime)
         }
 
-        timer = setTimeout( () => {
+        currentTab.timer = setTimeout( () => {
             tabLinks[nextIndex].click()
             let scrollAmount = tabLinks[nextIndex].offsetLeft
             currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
