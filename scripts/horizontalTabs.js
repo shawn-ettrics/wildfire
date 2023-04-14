@@ -1,4 +1,4 @@
-const tabDuration = 4000
+const tabDuration = 6000
 const mobileBreakpoint = 767
 
 const timedTabComponents = document.querySelectorAll('.timed-horizontal-tabs')
