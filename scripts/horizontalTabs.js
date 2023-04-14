@@ -55,17 +55,19 @@ tabMenus.forEach( menu => {
             })
     
             let currentTime
-            currentTab.onmouseenter = () => {
-                // timerAnime.pause()
-                // currentTime = timerAnime.currentTime
-                // clearTimeout(timer)
+
+            const tabContent = menu.querySelector('.tabs-content.w-tab-content') 
+            tabContent.onmouseenter = () => {
+                timerAnime.pause()
+                currentTime = timerAnime.currentTime
+                clearTimeout(timer)
             }
-            currentTab.onmouseleave = () => {
-                // console.log(timerAnime.currentTime)
-                // timerAnime.play()
-                // timer = setTimeout( () => {
-                //     tabLinks[nextIndex].click()
-                // }, tabDuration - currentTime)
+            tabContent.onmouseleave = () => {
+                console.log(timerAnime.currentTime)
+                timerAnime.play()
+                timer = setTimeout( () => {
+                    tabLinks[nextIndex].click()
+                }, tabDuration - currentTime)
             }
     
             timer = setTimeout( () => {
