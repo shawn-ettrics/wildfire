@@ -29,13 +29,15 @@ tabMenus.forEach( menu => {
         }
     })
 
-    let timer
+    
     
     function activateNext(currentTab) {
         let currentIndex = parseInt(currentTab.dataset.tabIndex)
         let nextIndex = currentIndex >= tabLinks.length - 1? 0 : currentIndex + 1
         let remainingDuration = tabDuration
         const activeBar = currentTab.querySelector('.progressbar')
+
+        let timer
 
         const timerAnime = activeBar.animate([
             {width: '0%'},
