@@ -15,9 +15,8 @@ tabMenus.forEach( menu => {
     // menu.style.overflow = 'scroll'
     const tabLinks = menu.querySelectorAll('.tab-link')
 
+    let timer
     tabLinks.forEach( (tab, i) => {
-
-        let timer
 
         const progressbar = document.createElement('div')
         progressbar.classList.add('progressbar')
@@ -29,6 +28,7 @@ tabMenus.forEach( menu => {
         }
 
         tab.onclick = () => {
+            // clearTimeout(timer)
             activateNext(tab)
         }
 
@@ -53,7 +53,6 @@ tabMenus.forEach( menu => {
             currentTab.onmouseenter = () => {
                 timerAnime.pause()
                 currentTime = timerAnime.currentTime
-                console.log(currentTime)
                 clearTimeout(timer)
             }
             currentTab.onmouseleave = () => {
