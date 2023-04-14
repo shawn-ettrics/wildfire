@@ -38,7 +38,7 @@ tabMenus.forEach( menu => {
         }
 
         function activate(currentTab) {
-            currentTab.parentElement.scrollTo({left: currentTab, behavior: 'smooth'})
+            currentTab.parentElement.scrollTo({left: currentTab.offsetLeft, behavior: 'smooth'})
 
             let currentIndex = parseInt(currentTab.dataset.tabIndex)
             let nextIndex = currentIndex >= tabLinks.length - 1? 0 : currentIndex + 1
