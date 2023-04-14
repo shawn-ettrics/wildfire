@@ -17,59 +17,66 @@ tabMenus.forEach( menu => {
 
     tabLinks.forEach( (tab, i) => {
 
+        let timer
+
         const progressbar = document.createElement('div')
         progressbar.classList.add('progressbar')
         tab.append(progressbar)
         tab.dataset.tabIndex = i
+
         if (tab.classList.contains('w--current')) {
             activateNext(tab)
         }
+
         tab.onclick = () => {
-            
             activateNext(tab)
+        }
+
+
+
+        function activateNext(currentTab) {
+            clearTimeout(timer)
+            let currentIndex = parseInt(currentTab.dataset.tabIndex)
+            let nextIndex = currentIndex >= tabLinks.length - 1? 0 : currentIndex + 1
+            let remainingDuration = tabDuration
+            const activeBar = currentTab.querySelector('.progressbar')
+    
+            const timerAnime = activeBar.animate([
+                {width: '0%'},
+                {width: '100%'}
+            ],{
+                duration: tabDuration,
+                easing: 'linear',
+            })
+    
+            let currentTime
+            currentTab.onmouseenter = () => {
+                timerAnime.pause()
+                currentTime = timerAnime.currentTime
+                console.log(currentTime)
+                clearTimeout(timer)
+            }
+            currentTab.onmouseleave = () => {
+                timerAnime.play()
+                timer = setTimeout( () => {
+                    tabLinks[nextIndex].click()
+                    let scrollAmount = tabLinks[nextIndex].offsetLeft
+                    currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
+                }, tabDuration - currentTime)
+            }
+    
+            timer = setTimeout( () => {
+                tabLinks[nextIndex].click()
+                let scrollAmount = tabLinks[nextIndex].offsetLeft
+                currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
+            }, tabDuration)
+            
         }
     })
 
     
     
-    function activateNext(currentTab) {
-        clearTimeout(currentTab.timer)
-        let currentIndex = parseInt(currentTab.dataset.tabIndex)
-        let nextIndex = currentIndex >= tabLinks.length - 1? 0 : currentIndex + 1
-        let remainingDuration = tabDuration
-        const activeBar = currentTab.querySelector('.progressbar')
 
-        const timerAnime = activeBar.animate([
-            {width: '0%'},
-            {width: '100%'}
-        ],{
-            duration: tabDuration,
-            easing: 'linear',
-        })
-
-        let currentTime
-        currentTab.onmouseenter = () => {
-            timerAnime.pause()
-            currentTime = timerAnime.currentTime
-            console.log(currentTime)
-            clearTimeout(currentTab.timer)
-        }
-        currentTab.onmouseleave = () => {
-            timerAnime.play()
-            currentTab.timer = setTimeout( () => {
-                tabLinks[nextIndex].click()
-                let scrollAmount = tabLinks[nextIndex].offsetLeft
-                currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
-            }, tabDuration - currentTime)
-        }
-
-        currentTab.timer = setTimeout( () => {
-            tabLinks[nextIndex].click()
-            let scrollAmount = tabLinks[nextIndex].offsetLeft
-            currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
-        }, tabDuration)
-        
-    }
 
 
     
