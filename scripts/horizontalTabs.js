@@ -30,7 +30,7 @@ tabMenus.forEach( menu => {
 
         tab.onclick = () => {
             let scrollAmount = tab.offsetLeft
-            currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
+            tab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
 
             // clearTimeout(timer)
             if (!tab.classList.contains('w--current')) {
@@ -84,20 +84,6 @@ tabMenus.forEach( menu => {
     
 
 
-
-    
-    // tabLinks[1].click()
-
-    // let i = 0
-    // const clickNext = () => {
-    //     tabLinks[i].click()
-    //     console.log(tabLinks[i])
-    //     i++
-    //     setTimeout(() => {
-    //         clickNext()
-    //     }, 1000 * timeInterval)
-    // } 
-    // clickNext()
 
 })
 
