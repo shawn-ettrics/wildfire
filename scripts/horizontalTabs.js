@@ -29,6 +29,8 @@ tabMenus.forEach( menu => {
         }
 
         tab.onclick = () => {
+            console.log(timer, 'onclick')
+            clearTimeout(timer)
             let scrollAmount = tab.offsetLeft
             tab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
 
@@ -42,6 +44,7 @@ tabMenus.forEach( menu => {
 
 
         function activateNext(currentTab) {
+            console.log(timer, 'activate')
             clearTimeout(timer)
             let currentIndex = parseInt(currentTab.dataset.tabIndex)
             let nextIndex = currentIndex >= tabLinks.length - 1? 0 : currentIndex + 1
@@ -58,6 +61,7 @@ tabMenus.forEach( menu => {
     
             let currentTime
             currentTab.onmouseenter = () => {
+                console.log(timer, 'mouseenter')
                 timerAnime.pause()
                 currentTime = timerAnime.currentTime
                 clearTimeout(timer)
