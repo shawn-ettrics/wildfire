@@ -31,6 +31,7 @@ tabMenus.forEach( menu => {
         tab.onclick = () => {
 
             if (!tab.classList.contains('w--current')) {
+                console.log(timer)
                 clearTimeout(timer)
                 activate(tab)
             }
@@ -55,18 +56,16 @@ tabMenus.forEach( menu => {
     
             let currentTime
             currentTab.onmouseenter = () => {
-                timerAnime.pause()
-                currentTime = timerAnime.currentTime
-                clearTimeout(timer)
+                // timerAnime.pause()
+                // currentTime = timerAnime.currentTime
+                // clearTimeout(timer)
             }
             currentTab.onmouseleave = () => {
-                console.log(timerAnime.currentTime)
-                timerAnime.play()
-                timer = setTimeout( () => {
-                    tabLinks[nextIndex].click()
-                    // let scrollAmount = tabLinks[nextIndex].offsetLeft
-                    // currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
-                }, tabDuration - currentTime)
+                // console.log(timerAnime.currentTime)
+                // timerAnime.play()
+                // timer = setTimeout( () => {
+                //     tabLinks[nextIndex].click()
+                // }, tabDuration - currentTime)
             }
     
             timer = setTimeout( () => {
