@@ -7,12 +7,6 @@ document.querySelector(':root').style.setProperty('--time', `${tabDuration}s`)
 
 tabMenus.forEach( menu => {
 
-    // let scrolldiv = document.createElement('div')
-    // scrolldiv.classList.add('scroll-div')
-    // menu.parentElement.insertBefore(scrolldiv, menu)
-    // scrolldiv.append(menu)
-
-    // menu.style.overflow = 'scroll'
     const tabLinks = menu.querySelectorAll('.tab-link')
 
     let timer
@@ -31,7 +25,6 @@ tabMenus.forEach( menu => {
         tab.onclick = () => {
 
             if (!tab.classList.contains('w--current')) {
-                // console.log(timer)
                 clearTimeout(timer)
                 activate(tab)
             }
@@ -57,6 +50,7 @@ tabMenus.forEach( menu => {
             let currentTime
 
             const tabContent = menu.querySelector('.tabs-content.w-tab-content') 
+            console.log(tabContent)
             tabContent.onmouseenter = () => {
                 timerAnime.pause()
                 currentTime = timerAnime.currentTime
@@ -72,8 +66,6 @@ tabMenus.forEach( menu => {
     
             timer = setTimeout( () => {
                 tabLinks[nextIndex].click()
-                // let scrollAmount = tabLinks[nextIndex].offsetLeft
-                // currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
             }, tabDuration)
             
         }
