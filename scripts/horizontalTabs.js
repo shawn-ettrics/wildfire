@@ -51,6 +51,7 @@ tabMenus.forEach( menu => {
         currentTab.onmouseenter = () => {
             timerAnime.pause()
             currentTime = timerAnime.currentTime
+            console.log(currentTime)
             clearTimeout(timer)
         }
         currentTab.onmouseleave = () => {
