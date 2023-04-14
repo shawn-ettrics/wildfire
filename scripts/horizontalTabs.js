@@ -49,20 +49,22 @@ timedTabComponents.forEach( tabComponent => {
     
             let currentTime
 
-            const tabContent = tabComponent.querySelector('.tabs-content.w-tab-content') 
-            console.log(tabContent)
-            tabContent.onmouseenter = () => {
-                timerAnime.pause()
-                currentTime = timerAnime.currentTime
-                clearTimeout(timer)
-            }
-            tabContent.onmouseleave = () => {
-                console.log(timerAnime.currentTime)
-                timerAnime.play()
-                timer = setTimeout( () => {
-                    tabLinks[nextIndex].click()
-                }, tabDuration - currentTime)
-            }
+            const pausingElments = tabComponent.querySelectorAll('.tabs-content.w-tab-content img') 
+            pausingElments.forEach( elm => {
+                elm.onmouseenter = () => {
+                    timerAnime.pause()
+                    currentTime = timerAnime.currentTime
+                    clearTimeout(timer)
+                }
+                elm.onmouseleave = () => {
+                    console.log(timerAnime.currentTime)
+                    timerAnime.play()
+                    timer = setTimeout( () => {
+                        tabLinks[nextIndex].click()
+                    }, tabDuration - currentTime)
+                }
+            })
+
     
             timer = setTimeout( () => {
                 tabLinks[nextIndex].click()
