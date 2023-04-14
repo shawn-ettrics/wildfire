@@ -31,7 +31,7 @@ tabMenus.forEach( menu => {
         tab.onclick = () => {
 
             if (!tab.classList.contains('w--current')) {
-                console.log(timer)
+                // console.log(timer)
                 clearTimeout(timer)
                 activate(tab)
             }
