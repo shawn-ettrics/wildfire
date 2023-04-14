@@ -16,6 +16,7 @@ tabMenus.forEach( menu => {
     const tabLinks = menu.querySelectorAll('.tab-link')
 
     let timer
+
     tabLinks.forEach( (tab, i) => {
 
         const progressbar = document.createElement('div')
@@ -28,8 +29,14 @@ tabMenus.forEach( menu => {
         }
 
         tab.onclick = () => {
+            let scrollAmount = tab.offsetLeft
+            currentTab.parentElement.scrollTo({left: scrollAmount, behavior: 'smooth'})
+
             // clearTimeout(timer)
-            activateNext(tab)
+            if (!tab.classList.contains('w--current')) {
+                activateNext(tab)
+            }
+
         }
 
 
