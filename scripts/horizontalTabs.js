@@ -52,22 +52,22 @@ timedTabComponents.forEach( tabComponent => {
             const pausingElm = tabComponent.querySelector('.tabs-content.w-tab-content') 
 
             pausingElm.onmouseenter = () => {
-                if (clientWidth > 768) {
+                if (innerWidth > 768) {
                     pauseAutoplay()
                 }
             }
             pausingElm.onmouseleave = () => {
-                if (clientWidth > 768) {
+                if (innerWidth > 768) {
                     continueAutoplay()
                 }
             }
             pausingElm.addEventListener('touchstart', () => {
-                if (clientWidth <= 768) {
+                if (innerWidth <= 768) {
                     pauseAutoplay()
                 }
             })
             pausingElm.addEventListener('touchend', () => {
-                if (clientWidth <= 768) {
+                if (innerWidth <= 768) {
                     continueAutoplay()
                 }
             })
