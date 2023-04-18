@@ -10,6 +10,8 @@ timedTabComponents.forEach( tabComponent => {
     const tabLinks = tabComponent.querySelectorAll('.tab-link')
 
     let timer
+    let currentTime
+    let nextIndex
 
     tabLinks.forEach( (tab, i) => {
 
@@ -34,8 +36,8 @@ timedTabComponents.forEach( tabComponent => {
         function activate(currentTab) {
             currentTab.parentElement.scrollTo({left: currentTab.offsetLeft, behavior: 'smooth'})
 
-            let currentIndex = parseInt(currentTab.dataset.tabIndex)
-            let nextIndex = currentIndex >= tabLinks.length - 1? 0 : currentIndex + 1
+            currentIndex = parseInt(currentTab.dataset.tabIndex)
+            nextIndex = currentIndex >= tabLinks.length - 1? 0 : currentIndex + 1
 
             const activeBar = currentTab.querySelector('.progressbar')
     
@@ -47,7 +49,6 @@ timedTabComponents.forEach( tabComponent => {
                 easing: 'linear',
             })
     
-            let currentTime
 
             const pausingElm = tabComponent.querySelector('.tabs-content.w-tab-content') 
 
@@ -90,7 +91,8 @@ timedTabComponents.forEach( tabComponent => {
                 clearTimeout(timer)
             }
             function continueAutoplay() {
-                timerAnime.play()
+                timerAnime.play(timer)
+                clearTimeout(timer)
                 timer = setTimeout( () => {
                     tabLinks[nextIndex].click()
                 }, tabDuration - currentTime)
