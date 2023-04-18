@@ -50,13 +50,34 @@ timedTabComponents.forEach( tabComponent => {
             let currentTime
 
             const pausingElm = tabComponent.querySelector('.tabs-content.w-tab-content') 
+
             pausingElm.onmouseenter = () => {
+                if (clientWidth > 768) {
+                    pauseAutoplay()
+                }
+            }
+            pausingElm.onmouseleave = () => {
+                if (clientWidth > 768) {
+                    continueAutoplay()
+                }
+            }
+            pausingElm.addEventListener('touchstart', () => {
+                if (clientWidth <= 768) {
+                    pauseAutoplay()
+                }
+            })
+            pausingElm.addEventListener('touchend', () => {
+                if (clientWidth <= 768) {
+                    continueAutoplay()
+                }
+            })
+
+            function pauseAutoplay() {
                 timerAnime.pause()
                 currentTime = timerAnime.currentTime
                 clearTimeout(timer)
             }
-            pausingElm.onmouseleave = () => {
-                console.log(timerAnime.currentTime)
+            function continueAutoplay() {
                 timerAnime.play()
                 timer = setTimeout( () => {
                     tabLinks[nextIndex].click()
