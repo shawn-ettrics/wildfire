@@ -51,29 +51,33 @@ timedTabComponents.forEach( tabComponent => {
 
             const pausingElm = tabComponent.querySelector('.tabs-content.w-tab-content') 
 
-            pausingElm.onmouseenter = () => {
+            pausingElm.onmouseenter = (ev) => {
                 if (innerWidth > 768) {
                     pauseAutoplay()
+                } else {
+                    ev.preventDefault()
                 }
             }
-            pausingElm.onmouseleave = () => {
+            pausingElm.onmouseleave = (ev) => {
                 if (innerWidth > 768) {
                     continueAutoplay()
+                } else {
+                    ev.preventDefault()
                 }
             }
-            pausingElm.addEventListener('touchstart', () => {
-                if (innerWidth <= 768) {
+            pausingElm.addEventListener('touchstart', ev => {
+                if (innerWidth <= 768 && ev.targetTouches.length < 2) {
                     pauseAutoplay()
                     console.log('start')
                 }
             })
-            pausingElm.addEventListener('touchend', () => {
+            pausingElm.addEventListener('touchend', ev => {
                 if (innerWidth <= 768) {
                     continueAutoplay()
                     console.log('end')
                 }
             })
-            pausingElm.addEventListener('touchcancel', () => {
+            pausingElm.addEventListener('touchcancel', ev => {
                 if (innerWidth <= 768) {
                     continueAutoplay()
                     console.log('cancel')
