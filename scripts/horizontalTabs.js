@@ -64,16 +64,19 @@ timedTabComponents.forEach( tabComponent => {
             pausingElm.addEventListener('touchstart', () => {
                 if (innerWidth <= 768) {
                     pauseAutoplay()
+                    console.log('start')
                 }
             })
             pausingElm.addEventListener('touchend', () => {
                 if (innerWidth <= 768) {
                     continueAutoplay()
+                    console.log('end')
                 }
             })
             pausingElm.addEventListener('touchcancel', () => {
                 if (innerWidth <= 768) {
                     continueAutoplay()
+                    console.log('cancel')
                 }
             })
 
