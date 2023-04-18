@@ -71,6 +71,11 @@ timedTabComponents.forEach( tabComponent => {
                     continueAutoplay()
                 }
             })
+            pausingElm.addEventListener('touchcancel', () => {
+                if (innerWidth <= 768) {
+                    continueAutoplay()
+                }
+            })
 
             function pauseAutoplay() {
                 timerAnime.pause()
