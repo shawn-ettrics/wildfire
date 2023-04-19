@@ -23,14 +23,14 @@
     }
 
 
-    .scroll-placeholder {
+    /* .scroll-placeholder {
         width: 1px;
         display: block;
         overflow: hidden;
         opacity: 0;
         margin: 0 30vw;
         white-space: nowrap;
-    }
+    } */
 
 
     .tab-link .progressbar {
