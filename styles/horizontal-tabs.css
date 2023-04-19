@@ -27,9 +27,11 @@
     } */
 
     .scroll-placeholder {
-        width: 50vw;
+        width: 1px;
         display: block;
         overflow: hidden;
+        opacity: 0;
+        margin: 0 25vw;
     }
 
 
