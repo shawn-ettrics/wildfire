@@ -9,6 +9,13 @@ document.querySelector(':root').style.setProperty('--time', `${tabDuration}s`)
 
 timedTabComponents.forEach( tabComponent => {
 
+    const scrollPlaceholder = document.createElement('div')
+    scrollPlaceholder.classList.add('scroll-placeholder')
+    if (isTouchDevice) {
+        tabComponent.querySelector('.w-tab-menu').append(scrollPlaceholder)
+    }
+
+
     // tabComponent.querySelector('.w-tab-menu').style.paddingRight = isTouchDevice? '60vw' : 0
     const tabLinks = tabComponent.querySelectorAll('.tab-link')
 
