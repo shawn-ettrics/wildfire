@@ -1,3 +1,5 @@
+const isTouchDevice = 'ontouchstart' in window
+
 const tabDuration = 10000
 const mobileBreakpoint = 767
 
@@ -53,35 +55,32 @@ timedTabComponents.forEach( tabComponent => {
             const pausingElm = tabComponent.querySelector('.tabs-content.w-tab-content') 
 
             pausingElm.onmouseenter = (ev) => {
-                if (innerWidth > 768) {
+                if (!isTouchDevice) {
                     pauseAutoplay()
                 } else {
                     ev.preventDefault()
                 }
             }
             pausingElm.onmouseleave = (ev) => {
-                if (innerWidth > 768) {
+                if (!isTouchDevice) {
                     continueAutoplay()
                 } else {
                     ev.preventDefault()
                 }
             }
             pausingElm.addEventListener('touchstart', ev => {
-                if (innerWidth <= 768 && ev.targetTouches.length < 2) {
+                if (isTouchDevice && ev.targetTouches.length < 2) {
                     pauseAutoplay()
-                    console.log('start')
                 }
             })
             pausingElm.addEventListener('touchend', ev => {
-                if (innerWidth <= 768) {
+                if (isTouchDevice) {
                     continueAutoplay()
-                    console.log('end')
                 }
             })
             pausingElm.addEventListener('touchcancel', ev => {
-                if (innerWidth <= 768) {
+                if (isTouchDevice) {
                     continueAutoplay()
-                    console.log('cancel')
                 }
             })
 
@@ -107,9 +106,6 @@ timedTabComponents.forEach( tabComponent => {
 
     
     
-
-
-
 })
 
 
