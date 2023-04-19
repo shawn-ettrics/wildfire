@@ -27,8 +27,9 @@
     } */
 
     .scroll-placeholder {
-        width: 50%;
+        width: 50vw;
         display: block;
+        overflow: hidden;
     }
 
 

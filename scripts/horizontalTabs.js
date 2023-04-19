@@ -11,6 +11,7 @@ timedTabComponents.forEach( tabComponent => {
 
     const scrollPlaceholder = document.createElement('div')
     scrollPlaceholder.classList.add('scroll-placeholder')
+    scrollPlaceholder.innerText = 'Invisible element for scroll padding'
     if (isTouchDevice) {
         tabComponent.querySelector('.w-tab-menu').append(scrollPlaceholder)
     }
