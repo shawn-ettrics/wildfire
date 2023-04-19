@@ -26,6 +26,10 @@
         margin-right: 60vw;
     } */
 
+    .timed-horizontal-tabs .w-tab-menu::after {
+        content: '';
+        width: 60vw;
+    }
 
 
     .tab-link .progressbar {

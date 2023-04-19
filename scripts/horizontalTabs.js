@@ -9,7 +9,7 @@ document.querySelector(':root').style.setProperty('--time', `${tabDuration}s`)
 
 timedTabComponents.forEach( tabComponent => {
 
-    tabComponent.querySelector('.w-tab-menu').style.paddingRight = isTouchDevice? '60vw' : 0
+    // tabComponent.querySelector('.w-tab-menu').style.paddingRight = isTouchDevice? '60vw' : 0
     const tabLinks = tabComponent.querySelectorAll('.tab-link')
 
     let timer
