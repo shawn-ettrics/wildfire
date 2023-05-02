@@ -24,6 +24,8 @@ slides[0].querySelector('.overflown-wrapper').append(slideData[1].content, slide
 
 logoBtns.forEach((btn, i) => {
     btn.onclick = () => {
+        logoBtns.querySelector('.slider-logo-color.active').classList.remove('active')
+        btn.querySelector('.slider-logo-color').classList.add('active')
 
         slides[0].querySelector('.padding-large').style.backgroundImage = slideData[i].background
         slides[0].querySelector('.padding-medium').style.backgroundColor = slideData[i].color

@@ -15,6 +15,7 @@ timedTabComponents.forEach( tabComponent => {
     if (isTouchDevice) {
         tabComponent.querySelector('.w-tab-menu').append(scrollPlaceholder)
     }
+    
 
 
     // tabComponent.querySelector('.w-tab-menu').style.paddingRight = isTouchDevice? '60vw' : 0
