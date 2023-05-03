@@ -10,7 +10,8 @@ slides.forEach((slide, i) => {
     slideData.push({
         background: getComputedStyle(slide.querySelector('.padding-large')).backgroundImage,
         color: getComputedStyle(slide.querySelector('.padding-medium')).backgroundColor,
-        content: slide.querySelector('.overflown-wrapper .is--testimonial')
+        content: slide.querySelector('.overflown-wrapper .is--testimonial'),
+        caption: slide.querySelector('.description').innerText
     })
     // slide.querySelector('.padding-medium').style.transition = 'background-color 0.4s ease-in-out'
     if (i != 0) {
@@ -33,6 +34,8 @@ logoBtns.forEach((btn, i) => {
 
         let scrollAmount = slides[0].querySelectorAll('.overflown-wrapper .is--testimonial')[i].offsetLeft
         slides[0].querySelector('.padding-large').scrollTo({left: scrollAmount, behavior: 'smooth'})
+
+        slides[0].querySelector('.description').innerText = slideData[i].caption
 
     }
 })
